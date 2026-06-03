@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Narrative · Cinematic Billboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #050505;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: #e0e0e0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  /* ═══════════ Noise ═══════════ */
+  .noise {
+    position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ═══════════ Intro ═══════════ */
+  .intro {
+    height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    position: relative; z-index: 1;
+  }
+  .intro .tag {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #3ccda0; margin-bottom: 1rem;
+  }
+  .intro h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 100; letter-spacing: 0.03em;
+    background: linear-gradient(180deg, #fff 0%, #666 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .intro .sub { font-size: 1rem; color: #666; margin-top: 1.2rem; max-width: 500px; line-height: 1.7; }
+  .intro .scroll-indicator {
+    margin-top: 4rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .intro .line {
+    width: 1px; height: 60px; background: linear-gradient(to bottom, #3ccda0, transparent);
+    animation: pulseLine 2.5s ease-in-out infinite;
+  }
+  .intro .scroll-indicator span { font-size: 0.65rem; letter-spacing: 0.2em; color: #555; }
+  @keyframes pulseLine { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.3)} }
+
+  /* ═══════════ Scene ═══════════ */
+  .scene {
+    position: relative;
+    height: 500vh; /* 4 cards × 125vh */
+  }
+
+  .billboard {
+    position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
+  }
+
+  /* ── BG layer with horizontal parallax ── */
+  .bb-bg {
+    position: absolute; inset: -15% -15% -15% -15%;
+    background-size: cover; background-position: center;
+    will-change: transform;
+  }
+
+  /* ── BG overlay gradient (curtain) ── */
+  .bb-curtain {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg,
+      rgba(5,5,5,0.95) 0%,
+      rgba(5,5,5,0.3) 25%,
+      rgba(5,5,5,0.05) 40%,
+      rgba(5,5,5,0.05) 60%,
+      rgba(5,5,5,0.3) 75%,
+      rgba(5,5,5,0.95) 100%
+    );
+    will-change: transform;
+  }
+
+  /* ── Primary visual accent (color wash) ── */
+  .bb-wash {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    opacity: 0; transition: opacity 1.2s ease;
+    mix-blend-mode: overlay;
+  }
+
+  /* ── Foreground elements layer ── */
+  .bb-fore {
+    position: absolute; z-index: 3; pointer-events: none;
+    will-change: transform;
+  }
+  .bb-fore .frag {
+    display: block; width: 120px; height: 120px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: absolute;
+  }
+
+  /* ── Content layer ── */
+  .bb-content {
+    position: absolute; inset: 0; z-index: 5;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(2rem, 8vw, 8rem);
+    will-change: transform, opacity;
+  }
+
+  .bb-content .chapter {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: #3ccda0; margin-bottom: 2rem;
+    overflow: hidden; display: inline-block;
+  }
+  .bb-content .chapter .ch-text {
+    display: inline-block;
+    filter: blur(4px); opacity: 0;
+    transform: translateY(12px);
+    transition: filter 1s ease, opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .bb-content .title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 100;
+    color: #fff; margin-bottom: 1.5rem; line-height: 1.1;
+    overflow: hidden;
+  }
+  .bb-content .title .letter {
+    display: inline-block; opacity: 0;
+    transform: translateY(100%) rotateX(40deg);
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .bb-content .desc {
+    font-size: 1.05rem; color: #888; line-height: 1.85; max-width: 520px;
+    filter: blur(3px); opacity: 0;
+    transform: translateY(16px);
+    transition: filter 1s ease, opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .bb-content .meta {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    font-size: 0.75rem; color: #555; letter-spacing: 0.08em;
+  }
+  .bb-content .meta span {
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* ── Active triggers ── */
+  .billboard.active .ch-text {
+    filter: blur(0); opacity: 1; transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+  .billboard.active .desc {
+    filter: blur(0); opacity: 1; transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+  .billboard.active .letter {
+    opacity: 1; transform: translateY(0) rotateX(0);
+  }
+  .billboard.active .meta span:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .billboard.active .meta span:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+  .billboard.active .meta span:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+  .billboard.active .bb-wash { opacity: 0.25; }
+
+  /* ── Floating number ── */
+  .bb-number {
+    position: absolute; z-index: 4; font-size: clamp(10rem, 18vw, 22rem);
+    font-weight: 900; line-height: 0.8; color: rgba(255,255,255,0.015);
+    right: -2%; top: -10%; pointer-events: none;
+    will-change: transform;
+  }
+
+  /* ── Vignette & edges ── */
+  .vignette {
+    position: absolute; inset: 0; z-index: 6; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+  }
+
+  /* ═══════════ Progress bar ═══════════ */
+  .progress-track {
+    position: fixed; top: 0; left: 0; width: 100%; height: 1px; z-index: 200; pointer-events: none;
+    background: rgba(255,255,255,0.04);
+  }
+  .progress-fill {
+    height: 100%; background: #3ccda0;
+    transform-origin: left; will-change: transform;
+  }
+
+  /* ═══════════ Chapter dots ═══════════ */
+  .chapter-nav {
+    position: fixed; right: 2rem; top: 50%; transform: translateY(-50%);
+    z-index: 200; display: flex; flex-direction: column; gap: 10px;
+  }
+  .chapter-nav .c-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: background 0.4s, transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+  }
+  .chapter-nav .c-dot.seen    { background: rgba(255,255,255,0.35); }
+  .chapter-nav .c-dot.current { background: #3ccda0; transform: scale(1.6); box-shadow: 0 0 10px rgba(60,205,160,0.4); }
+
+  /* ═══════════ Footer ═══════════ */
+  .end-marker {
+    height: 100vh; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: 100; color: #333;
+    position: relative; z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="chapter-nav" id="chapterNav"></div>
+
+<!-- ═══ Intro ═══ -->
+<div class="intro">
+  <div class="tag">Selected Works</div>
+  <h1>匠心之作</h1>
+  <p class="sub">向下滚动，进入一段关于设计的视觉旅程</p>
+  <div class="scroll-indicator"><div class="line"></div><span>SCROLL</span></div>
+</div>
+
+<!-- ═══ Scene ═══ -->
+<div class="scene" id="scene">
+
+  <!-- Card 0 -->
+  <div class="billboard" data-index="0">
+    <div class="bb-bg" style="background-image:url(../images/works/image1.webp)"></div>
+    <div class="bb-curtain"></div>
+    <div class="bb-wash" style="background:radial-gradient(ellipse at 30% 50%, #3ccda0, transparent 70%)"></div>
+    <div class="bb-fore">
+      <div class="frag" style="top:15%;left:8%"></div>
+      <div class="frag" style="top:70%;left:20%;width:60px;height:60px"></div>
+    </div>
+    <div class="bb-number" data-text="01">01</div>
+    <div class="vignette"></div>
+    <div class="bb-content" style="justify-content:flex-start; padding-top:20vh;">
+      <div class="chapter"><span class="ch-text">Chapter One</span></div>
+      <div class="title"><span class="letter">品</span><span class="letter">牌</span><span class="letter">重</span><span class="letter">塑</span></div>
+      <p class="desc">从传统到数字化的品牌升级路径。每一个细节都在讲述品牌的故事，每一次视觉表达都承载着战略意图。</p>
+      <div class="meta">
+        <span>Brand Identity</span>
+        <span>Visual System</span>
+        <span>Strategy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="billboard" data-index="1">
+    <div class="bb-bg" style="background-image:url(../images/works/image2.webp)"></div>
+    <div class="bb-curtain"></div>
+    <div class="bb-wash" style="background:radial-gradient(ellipse at 70% 40%, #444, transparent 70%)"></div>
+    <div class="bb-fore">
+      <div class="frag" style="top:25%;right:10%"></div>
+      <div class="frag" style="top:60%;right:25%;width:80px;height:80px"></div>
+    </div>
+    <div class="bb-number" data-text="02">02</div>
+    <div class="vignette"></div>
+    <div class="bb-content" style="align-items:flex-end; text-align:right; padding-right:clamp(2rem,10vw,8rem);">
+      <div class="chapter"><span class="ch-text">Chapter Two</span></div>
+      <div class="title"><span class="letter">交</span><span class="letter">互</span><span class="letter">实</span><span class="letter">验</span></div>
+      <p class="desc" style="text-align:right">探索物理感与数字界面的边界。将重力、惯性、弹性注入像素，每一次交互都是直觉的回响。</p>
+      <div class="meta">
+        <span>UX Design</span>
+        <span>Motion</span>
+        <span>Prototyping</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="billboard" data-index="2">
+    <div class="bb-bg" style="background-image:url(../images/works/image3.webp)"></div>
+    <div class="bb-curtain"></div>
+    <div class="bb-wash" style="background:radial-gradient(ellipse at 50% 60%, #e85570, transparent 70%)"></div>
+    <div class="bb-fore">
+      <div class="frag" style="top:40%;left:5%;width:90px;height:90px;border-radius:30%"></div>
+      <div class="frag" style="top:15%;left:40%;width:50px;height:50px"></div>
+    </div>
+    <div class="bb-number" data-text="03">03</div>
+    <div class="vignette"></div>
+    <div class="bb-content" style="justify-content:flex-end; padding-bottom:18vh;">
+      <div class="chapter"><span class="ch-text">Chapter Three</span></div>
+      <div class="title"><span class="letter">插</span><span class="letter">画</span><span class="letter">叙</span><span class="letter">事</span></div>
+      <p class="desc">为品牌故事注入视觉灵魂。用画笔勾勒情感，让品牌在静默中发出声音。</p>
+      <div class="meta">
+        <span>Illustration</span>
+        <span>Storytelling</span>
+        <span>Art Direction</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="billboard" data-index="3">
+    <div class="bb-bg" style="background-image:url(../images/works/image4.webp)"></div>
+    <div class="bb-curtain"></div>
+    <div class="bb-wash" style="background:radial-gradient(ellipse at 60% 30%, #3ccda0, transparent 70%)"></div>
+    <div class="bb-fore">
+      <div class="frag" style="top:50%;left:50%;width:160px;height:160px;transform:translate(-50%,-50%)"></div>
+    </div>
+    <div class="bb-number" data-text="04">04</div>
+    <div class="vignette"></div>
+    <div class="bb-content" style="justify-content:center; align-items:center; text-align:center;">
+      <div class="chapter"><span class="ch-text">Chapter Four</span></div>
+      <div class="title"><span class="letter">动</span><span class="letter">态</span><span class="letter">系</span><span class="letter">统</span></div>
+      <p class="desc" style="text-align:center">构建可生长的视觉语言体系。设计应该像生命一样呼吸、演变、生长。</p>
+      <div class="meta">
+        <span>Design System</span>
+        <span>Animation</span>
+        <span>Evolution</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="end-marker"><p>— 以匠心 · 见非凡 —</p></div>
+
+<script>
+(function() {
+  var scene = document.getElementById('scene');
+  var billboards = Array.from(scene.querySelectorAll('.billboard'));
+  var n = billboards.length;
+  var vh = window.innerHeight;
+  var totalScrollH = n * vh * 1.25; // 125vh per card
+
+  var progressFill = document.getElementById('progressFill');
+  var chapterNav = document.getElementById('chapterNav');
+
+  /* ═══════ Chapter dots ═══════ */
+  billboards.forEach(function(_, i) {
+    var d = document.createElement('div');
+    d.className = 'c-dot';
+    d.addEventListener('click', (function(j) { return function() {
+      window.scrollTo({ top: j * vh * 1.25 + vh, behavior: 'smooth' });
+    }})(i));
+    chapterNav.appendChild(d);
+  });
+  var dots = chapterNav.querySelectorAll('.c-dot');
+
+  /* ═══════ Letter stagger setup ═══════ */
+  billboards.forEach(function(bb) {
+    var letters = bb.querySelectorAll('.title .letter');
+    letters.forEach(function(l, j) {
+      l.style.transitionDelay = (0.05 + j * 0.07) + 's';
+    });
+  });
+
+  /* ═══════ Resize ═══════ */
+  window.addEventListener('resize', function() {
+    vh = window.innerHeight;
+  });
+
+  /* ═══════ RAF loop ═══════ */
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(update); ticking = false; }
+    ticking = true;
+  }, { passive: true });
+
+  function update() {
+    var scrollY = window.pageYOffset;
+    var segH = vh * 1.25;
+
+    /* ── Progress bar ── */
+    var maxScroll = n * segH - vh;
+    var gp = maxScroll > 0 ? Math.min(1, Math.max(0, scrollY / maxScroll)) : 0;
+    progressFill.style.transform = 'scaleX(' + gp + ')';
+
+    /* ── Active index ── */
+    var activeIdx = Math.min(n - 1, Math.floor(scrollY / segH));
+    var segP = (scrollY % segH) / segH; // 0→1 within current card
+
+    billboards.forEach(function(bb, i) {
+      var rect = bb.getBoundingClientRect();
+      var cardP = (vh - rect.top) / (vh + rect.height);
+      cardP = Math.max(0, Math.min(1, cardP));
+
+      /* ═══════ BACKGROUND: horizontal parallax ═══════ */
+      var bg = bb.querySelector('.bb-bg');
+      // Direction alternates per card: even cards parallax left, odd cards parallax right
+      var dir = i % 2 === 0 ? 1 : -1;
+      var bgShiftX = (cardP - 0.5) * 60 * dir;
+      // Vertical: slight upward drift as you scroll through
+      var bgShiftY = -cardP * 15;
+      var bgScale = 1.06 + cardP * 0.05; // 1.06→1.11
+      var bgBright = 0.28 + cardP * 0.28;
+      var bgSat = 0.35 + cardP * 0.45;
+      bg.style.transform = 'translate(' + bgShiftX + 'px, ' + bgShiftY + 'px) scale(' + bgScale + ')';
+      bg.style.filter = 'brightness(' + bgBright + ') saturate(' + bgSat + ')';
+
+      /* ═══════ CURTAIN: moves opposite to bg, creating depth ═══════ */
+      var curtain = bb.querySelector('.bb-curtain');
+      var ctShiftY = (cardP - 0.5) * 20;
+      curtain.style.transform = 'translateY(' + ctShiftY + 'px)';
+
+      /* ═══════ NUMBER: large float ═══════ */
+      var num = bb.querySelector('.bb-number');
+      var numShift = (cardP - 0.5) * (-50) * dir;
+      num.style.transform = 'translateX(' + numShift + 'px)';
+
+      /* ═══════ FORE fragments ═══════ */
+      var fore = bb.querySelector('.bb-fore');
+      if (fore) {
+        var fShiftX = (cardP - 0.5) * 90 * dir * -1;
+        var fShiftY = (cardP - 0.5) * (-30);
+        var fOpacity = 1 - Math.abs(cardP - 0.5) * 2; // peak at center
+        fore.style.transform = 'translate(' + fShiftX + 'px, ' + fShiftY + 'px)';
+        fore.style.opacity = fOpacity;
+      }
+
+      /* ═══════ CONTENT ═══════ */
+      var content = bb.querySelector('.bb-content');
+      // Content zone: cardP 0.2→0.55 (peak centered, narrow window for punchier reveal)
+      var cNorm = (cardP - 0.2) / 0.4;
+      cNorm = Math.max(0, Math.min(1, cNorm));
+      // Eased
+      cNorm = cNorm < 0.5 ? 2 * cNorm * cNorm : 1 - Math.pow(-2 * cNorm + 2, 2) / 2;
+      var cY = (1 - cNorm) * 50;
+      content.style.opacity = cNorm;
+      content.style.transform = 'translateY(' + cY + 'px)';
+
+      // Active for text stagger + blur removal
+      if (cNorm > 0.35) bb.classList.add('active');
+      else bb.classList.remove('active');
+    });
+
+    /* ── Dots ── */
+    dots.forEach(function(d, j) {
+      d.classList.toggle('seen', j <= activeIdx);
+      d.classList.toggle('current', j === activeIdx);
+    });
+  }
+
+  // Init
+  update();
+  console.log('🎬 Cinematic Billboard v2 —', n, 'chapters, horizontal parallax, letter stagger, blur focus');
+})();
+</script>
+
+</body>
+</html>
