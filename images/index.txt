@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Visual Art &amp; Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,200..1000;1,9..40,200..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-transition" id="pageTransition"></div>
+<div class="loader" id="loader"><div class="loader-counter" id="loaderCounter">0</div></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" data-link="home">NEO</a>
+  <ul class="nav-links">
+    <li><a href="#work" data-link="work">Work</a></li>
+    <li><a href="#showcase" data-link="showcase">Featured</a></li>
+    <li><a href="#motion" data-link="motion">Motion</a></li>
+    <li><a href="#about" data-link="about">About</a></li>
+  </ul>
+</nav>
+
+<!-- ═════ HERO ═════ -->
+<section class="hero" id="home">
+  <div class="hero-beams"><div class="hero-beam"></div><div class="hero-beam"></div><div class="hero-beam"></div><div class="hero-beam"></div></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Visual Artist &amp; Designer</p>
+    <h1 class="hero-title">
+      <span class="word"><span class="word-inner">I</span></span> <span class="word"><span class="word-inner">make</span></span> <span class="word"><span class="word-inner">things</span></span><br>
+      <span class="word"><span class="word-inner">that</span></span> <span class="word"><span class="word-inner">don&rsquo;t</span></span> <span class="word"><span class="word-inner">look</span></span><br>
+      <span class="word"><span class="word-inner">like</span></span> <span class="word"><span class="word-inner">anything</span></span> <span class="word"><span class="word-inner">else.</span></span>
+    </h1>
+    <p class="hero-subtitle">Painting, digital art, sculpture, and visual design. This is where raw materials meet obsessive craft.</p>
+  </div>
+  <div class="scroll-hint"><div class="scroll-hint-line"></div><span class="scroll-hint-text">Scroll</span></div>
+</section>
+
+<!-- ═════ WORK LIST ═════ -->
+<section class="works" id="work">
+  <div class="works-header anim-up">
+    <div><p class="section-tag">Selected Works</p><h2 class="section-heading">Recent<br>Pieces</h2></div>
+    <span class="works-count">06 / 2023&ndash;2026</span>
+  </div>
+  <div class="work-list stagger-children">
+
+    <div class="work-card anim-up" data-work="flux" data-image="images/works/flux-preview.jpg" data-hero="images/detail/flux-hero.jpg" style="--stagger-delay:0s"><span class="work-idx">01</span><div><h3 class="work-name">Chromatic Flux</h3><p class="work-medium">Oil on Canvas &middot; 120&times;180 cm</p></div><div class="work-tags"><span class="tag">Abstract</span><span class="tag">Color Field</span></div><span class="work-year">2026</span></div>
+
+    <div class="work-card anim-up" data-work="silence" data-image="images/works/silence-preview.jpg" data-hero="images/detail/silence-hero.jpg" style="--stagger-delay:0.08s"><span class="work-idx">02</span><div><h3 class="work-name">The Shape of Silence</h3><p class="work-medium">Digital Painting &middot; 4K</p></div><div class="work-tags"><span class="tag">Digital</span><span class="tag">Minimal</span></div><span class="work-year">2025</span></div>
+
+    <div class="work-card anim-up" data-work="erosion" data-image="images/works/erosion-preview.jpg" data-hero="images/detail/erosion-hero.jpg" style="--stagger-delay:0.16s"><span class="work-idx">03</span><div><h3 class="work-name">Erosion Study No. 4</h3><p class="work-medium">Mixed Media &middot; 90&times;120 cm</p></div><div class="work-tags"><span class="tag">Mixed Media</span><span class="tag">Texture</span></div><span class="work-year">2025</span></div>
+
+    <div class="work-card anim-up" data-work="neon" data-image="images/works/neon-preview.jpg" data-hero="images/detail/neon-hero.jpg" style="--stagger-delay:0.24s"><span class="work-idx">04</span><div><h3 class="work-name">Neon Liturgy</h3><p class="work-medium">Acrylic &amp; LED &middot; 150&times;200 cm</p></div><div class="work-tags"><span class="tag">Installation</span><span class="tag">Light Art</span></div><span class="work-year">2024</span></div>
+
+    <div class="work-card anim-up" data-work="void" data-image="images/works/void-preview.jpg" data-hero="images/detail/void-hero.jpg" style="--stagger-delay:0.32s"><span class="work-idx">05</span><div><h3 class="work-name">Constructing the Void</h3><p class="work-medium">Sculpture &middot; Steel &amp; Glass &middot; 2.4m</p></div><div class="work-tags"><span class="tag">Sculpture</span><span class="tag">Kinetic</span></div><span class="work-year">2023</span></div>
+
+    <div class="work-card anim-up" data-work="tidal" data-image="images/works/tidal-preview.jpg" data-hero="images/detail/tidal-hero.jpg" style="--stagger-delay:0.4s"><span class="work-idx">06</span><div><h3 class="work-name">Tidal Memory</h3><p class="work-medium">Projection Mapping &middot; Site-specific</p></div><div class="work-tags"><span class="tag">Projection</span><span class="tag">Site-Specific</span></div><span class="work-year">2023</span></div>
+
+  </div>
+</section>
+
+<!-- ═════ FEATURED SHOWCASE (parallax) ═════ -->
+<section class="showcase" id="showcase">
+  <div class="showcase-header anim-up">
+    <p class="section-tag">Featured</p>
+    <h2 class="section-heading">Collection<br>Highlights</h2>
+  </div>
+  <div class="showcase-grid">
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/chromatic-bg.jpg)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Color Series &middot; 2024&ndash;2026</p>
+        <h3>Chromatic Explorations</h3>
+        <p>A multi-year investigation into color as both subject and structure. Each piece begins with a single hue and grows outward through controlled, almost geological layering.</p>
+      </div>
+    </div>
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/algorithmic-bg.jpg)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Generative Series &middot; 2025</p>
+        <h3>Algorithmic Landscapes</h3>
+        <p>Where code meets canvas. These digital works are born from custom algorithms that simulate natural erosion, growth, and decay before being finished by hand.</p>
+      </div>
+    </div>
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/lightspace-bg.jpg)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Installation &middot; 2023&ndash;Present</p>
+        <h3>Light &amp; Space</h3>
+        <p>Large-scale installations that transform physical environments. Using LED arrays, projection, and reflective surfaces to alter the perception of space itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ MOTION / VIDEO ═════ -->
+<section class="motion-section" id="motion">
+  <div class="motion-header anim-up">
+    <p class="section-tag">Motion</p>
+    <h2 class="section-heading">Moving<br>Image</h2>
+    <p class="motion-intro">Process recordings, experimental motion pieces, and documentation of works that exist in time as well as space.</p>
+  </div>
+  <div class="motion-grid">
+    <div class="motion-card anim-up" style="--stagger-delay:0s">
+      <div class="motion-video-wrap">
+        <video class="motion-video" src="videos/video-1.mp4" poster="videos/cover-1.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="motion-play-overlay" data-play><span class="motion-play-icon">&#9654;</span></div>
+        <div class="motion-progress"><div class="motion-progress-bar"></div></div>
+      </div>
+      <h3 class="motion-title">Brush in Motion</h3>
+      <p class="motion-desc">Time-lapse of the Chromatic Flux painting process, condensed from 48 hours of studio footage.</p>
+    </div>
+    <div class="motion-card anim-up" style="--stagger-delay:0.12s">
+      <div class="motion-video-wrap">
+        <video class="motion-video" src="videos/video-2.mp4" poster="videos/cover-2.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="motion-play-overlay" data-play><span class="motion-play-icon">&#9654;</span></div>
+        <div class="motion-progress"><div class="motion-progress-bar"></div></div>
+      </div>
+      <h3 class="motion-title">Generative Drift</h3>
+      <p class="motion-desc">A real-time generative composition. Each playback cycle evolves the piece into a new configuration.</p>
+    </div>
+    <div class="motion-card anim-up" style="--stagger-delay:0.24s">
+      <div class="motion-video-wrap">
+        <video class="motion-video" src="videos/video-3.mp4" poster="videos/cover-3.jpg" muted loop playsinline preload="metadata"></video>
+        <div class="motion-play-overlay" data-play><span class="motion-play-icon">&#9654;</span></div>
+        <div class="motion-progress"><div class="motion-progress-bar"></div></div>
+      </div>
+      <h3 class="motion-title">Tidal Memory — Documentation</h3>
+      <p class="motion-desc">Three nights of projection mapping on the riverside warehouse, captured from multiple angles and edited into a single sequence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ ABOUT ═════ -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-large anim-up"><p class="section-tag">About the Artist</p><p>I&rsquo;m a visual artist working at the intersection of <em>traditional craft</em> and <em>digital experimentation</em>&mdash;where paint meets pixels.</p></div>
+    <div class="about-body anim-up">
+      <p>My work spans oil painting, digital art, sculpture, and installation. I don&rsquo;t believe in medium boundaries&mdash;the idea dictates the tools, not the other way around. Every piece is a conversation between intention and accident.</p>
+      <p>Based in Shanghai, exhibiting internationally. My work has appeared in galleries across Asia and Europe, and in private collections worldwide.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-num" data-count="60">0<span>+</span></div><div class="stat-lbl">Works Created</div></div>
+        <div class="stat"><div class="stat-num" data-count="12">0</div><div class="stat-lbl">Exhibitions</div></div>
+        <div class="stat"><div class="stat-num" data-count="7">0</div><div class="stat-lbl">Countries Shown</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ MARQUEE ═════ -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Oil Painting <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Digital Art <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Sculpture <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Installation <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Projection Mapping <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Mixed Media <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Oil Painting <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Digital Art <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Sculpture <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Installation <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Projection Mapping <span class="diamond">&#9670;</span></div>
+    <div class="marquee-item">Mixed Media <span class="diamond">&#9670;</span></div>
+  </div>
+</section>
+
+<!-- ═════ FOOTER ═════ -->
+<footer class="footer" id="contact">
+  <div class="footer-cta" id="footerCta"><span class="ft-word"><span class="ft-word-inner">Let&rsquo;s</span></span> <span class="ft-word"><span class="ft-word-inner">create</span></span><br><span class="ft-word"><span class="ft-word-inner">something</span></span> <span class="ft-word"><span class="ft-word-inner">iconic.</span></span></div>
+  <div class="footer-right"><a href="mailto:hello@studioneo.art" class="footer-link">hello@studioneo.art</a><p class="footer-copy">&copy; 2026. All rights reserved.</p></div>
+</footer>
+
+<!-- Work Detail Overlay -->
+<div class="work-detail" id="workDetail">
+  <button class="detail-close" id="detailClose" aria-label="Close">&times;</button>
+  <div class="detail-hero"><img class="detail-hero-img" id="detailHeroImg" src="" alt=""><div class="detail-hero-content"><p class="section-tag" id="detailTag"></p><h1 id="detailTitle"></h1><p id="detailSubtitle"></p></div></div>
+  <div class="detail-body">
+    <div class="detail-meta" id="detailMeta"></div>
+    <div id="detailContent"></div>
+    <div class="detail-gallery" id="detailGallery"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
