@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.add('light');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no">
+<link rel="icon" href="data:,">
+<title>Portfolio 鈥?Visual Art &amp; Design</title>
+<link rel="preload" href="Font/Google_Sans/GoogleSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="Font/Google_Sans/GoogleSans-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face{font-family:'Google Sans';src:url('Font/Google_Sans/GoogleSans-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Google Sans';src:url('Font/Google_Sans/GoogleSans-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Google Sans';src:url('Font/Google_Sans/GoogleSans-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Google Sans';src:url('Font/Google_Sans/GoogleSans-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Google Sans';src:url('Font/Google_Sans/GoogleSans-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+</style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="scroll-bar" id="scrollBar"><div class="scroll-thumb" id="scrollThumb"></div><div class="scroll-dot-marker" data-target="#home"></div><div class="scroll-dot-marker" data-target="#work"></div><div class="scroll-dot-marker" data-target="#ice"></div><div class="scroll-dot-marker" data-target="#showcase"></div><div class="scroll-dot-marker" data-target="#motion"></div><div class="scroll-dot-marker" data-target="#about"></div></div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-transition" id="pageTransition"></div>
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-number" id="loaderNumber">0</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderBar"></div></div>
+    <p class="loader-sub">Crescent Portfolio</p>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" data-link="home">YYJZ</a>
+  <canvas class="nav-waveform" id="navWaveform" width="160" height="36"></canvas>
+  <ul class="nav-links">
+    <li><a href="#work" data-link="work">Work</a></li>
+    <li><a href="#showcase" data-link="showcase">Featured</a></li>
+    <li><a href="#motion" data-link="motion">Motion</a></li>
+    <li><a href="#poetry" data-link="poetry">Poetry</a></li>
+    <li><a href="#about" data-link="about">About</a></li>
+    <li class="nav-menu-li"> <div class="theme-pull-string" id="themePullString"></div> <div class="theme-pull-wrapper" id="themePullWrapper"> <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><span class="theme-toggle-icon"></span></button> </div> <button class="nav-menu-btn" id="navMenuBtn" aria-label="Menu"> <span class="menu-line"></span> <span class="menu-line"></span> </button> </li>
+  </ul>
+</nav>
+
+<canvas class="stars-canvas" id="starsCanvas"></canvas>
+
+<!-- 鈺愨晲鈺愨晲鈺?HERO 鈺愨晲鈺愨晲鈺?-->
+<section class="hero" id="home">
+  <canvas class="frames-canvas" id="framesCanvas"></canvas>
+  <div class="latch-clips" id="latchClips">
+    <div class="latch-clip" data-idx="0"><div class="latch-circle"></div></div>
+    <div class="latch-clip" data-idx="1"><div class="latch-circle"></div></div>
+    <div class="latch-clip" data-idx="2"><div class="latch-circle"></div></div>
+    <div class="latch-clip" data-idx="3"><div class="latch-circle"></div></div>
+  </div>
+  <div class="hero-beams"><div class="hero-beam"></div><div class="hero-beam"></div><div class="hero-beam"></div><div class="hero-beam"></div></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Visual Artist &amp; Designer</p>
+    <h1 class="hero-title hero-title-crescent" id="heroCrescent">
+      <div class="cr-line"><span class="cr-char" style="--cr-x:0">C</span><span class="cr-char" style="--cr-x:-.03em">R</span><span class="cr-char" style="--cr-x:-.02em">E</span><span class="cr-char" style="--cr-x:-.02em">S</span></div>
+      <div class="cr-line"><span class="cr-char" style="--cr-x:.03em">C</span><span class="cr-char" style="--cr-x:-.02em">E</span><span class="cr-char" style="--cr-x:-.02em">N</span><span class="cr-char" style="--cr-x:-.03em">T</span></div>
+    </h1>
+    <p class="hero-subtitle">Painting, digital art, sculpture, and visual design. This is where raw materials meet obsessive craft.</p>
+  </div>
+  <div class="scroll-hint"><div class="scroll-hint-line"></div><span class="scroll-hint-text">Scroll</span></div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?WORK LIST 鈺愨晲鈺愨晲鈺?-->
+<section class="works" id="work">
+  <div class="works-header anim-up">
+    <div><p class="section-tag">Selected Works</p><h2 class="section-heading">RECENT<br>PIECES</h2></div>
+    <span class="works-count">04 / 2024&ndash;2026</span>
+  </div>
+  <div class="work-list stagger-children">
+
+    <div class="work-card anim-up" data-work="flux" data-image="images/works/image1.webp" data-hero="images/detail/hero1.webp" style="--stagger-delay:0s"><span class="work-idx">NO.1</span><div><h3 class="work-name">JingZhao737</h3><p class="work-medium">1280 &times; 720</p></div><div class="work-tags"><span class="tag">Abstract</span><span class="tag">Color Field</span></div><span class="work-year">2026</span></div>
+
+    <div class="work-card anim-up" data-work="silence" data-image="images/works/image2.jpg" data-hero="images/detail/hero2.webp" style="--stagger-delay:0.1s"><span class="work-idx">NO.2</span><div><h3 class="work-name">Star</h3><p class="work-medium">3440 &times; 2880</p></div><div class="work-tags"><span class="tag">Digital</span><span class="tag">Minimal</span></div><span class="work-year">2025</span></div>
+
+    <div class="work-card anim-up" data-work="neon" data-image="images/works/image3.webp" data-hero="images/detail/hero3.webp" style="--stagger-delay:0.2s"><span class="work-idx">NO.3</span><div><h3 class="work-name">Blade Runner</h3><p class="work-medium">2580 &times; 1080</p></div><div class="work-tags"><span class="tag">Installation</span><span class="tag">Light Art</span></div><span class="work-year">2024</span></div>
+
+    <div class="work-card anim-up" data-work="tidal" data-image="images/works/image4.webp" data-hero="images/detail/hero4.webp" style="--stagger-delay:0.3s"><span class="work-idx">NO.4</span><div><h3 class="work-name">Breath</h3><p class="work-medium">2580 &times; 1080</p></div><div class="work-tags"><span class="tag">Projection</span><span class="tag">Site-Specific</span></div><span class="work-year">2023</span></div>
+
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?3D ICE CRYSTAL 鈺愨晲鈺愨晲鈺?-->
+<section class="ice-section" id="ice">
+  <div class="ice-header anim-up">
+    <p class="section-tag">3D Exploration</p>
+    <h2 class="section-heading">VISION</h2>
+  </div>
+  <!-- HDR 鍒囨崲锛氫笁涓悓蹇冨渾 -->
+  <div class="hdr-switcher" id="hdrSwitcher">
+    <button class="hdr-ring" data-hdr="0" style="--ring-color:#8dba6d;"></button>
+    <button class="hdr-ring" data-hdr="1" style="--ring-color:#e8a44c;"></button>
+    <button class="hdr-ring" data-hdr="2" style="--ring-color:#8899bb;"></button>
+  </div>
+  <div class="ice-container">
+    <canvas class="ice-canvas" id="iceCanvas"></canvas>
+    <div class="ice-hint">
+      <span>Drag to rotate</span>
+      <span class="ice-hint-sep"></span>
+      <span>Drag slider below to zoom</span>
+    </div>
+  </div>
+  <div class="zoom-slider" id="zoomSlider">
+    <div class="zoom-slider-track">
+      <div class="zoom-slider-fill" id="zoomFill"></div>
+      <div class="zoom-slider-knob" id="zoomKnob"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?FEATURED SHOWCASE (parallax) 鈺愨晲鈺愨晲鈺?-->
+<section class="showcase" id="showcase">
+  <div class="showcase-header anim-up">
+    <p class="section-tag">Featured</p>
+    <h2 class="section-heading">HIGHLIGHTS</h2>
+  </div>
+  <div class="showcase-grid">
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/bg1.webp)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Color Series &middot; 2024&ndash;2026</p>
+        <h3 class="showcase-title">Chromatic Flux</h3>
+      </div>
+    </div>
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/bg2.webp)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Generative Series &middot; 2025</p>
+        <h3 class="showcase-title">The Shape of Silence</h3>
+      </div>
+    </div>
+    <div class="showcase-item anim-up" data-parallax="true">
+      <div class="showcase-bg" style="background-image:url(images/showcase/bg3.webp)"></div>
+      <div class="showcase-overlay"></div>
+      <div class="showcase-info">
+        <p class="section-tag">Installation &middot; 2023&ndash;Present</p>
+        <h3 class="showcase-title">Neon Liturgy</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?MOTION / VIDEO 鈺愨晲鈺愨晲鈺?-->
+<section class="motion-section" id="motion">
+  <div class="motion-header anim-up">
+    <p class="section-tag">Motion</p>
+    <h2 class="section-heading">MOVING</h2>
+  </div>
+  <div class="motion-hero" id="motionHero">
+    <div class="motion-carousel-track" id="motionTrack">
+      <div class="motion-slide" data-index="0">
+        <video class="motion-slide-video" src="videos/reel2.mp4" poster="videos/cover.jpg" muted loop playsinline preload="none"></video>
+        <div class="motion-slide-info"><h3>Ephemeral Light</h3></div>
+      </div>
+      <div class="motion-slide" data-index="1">
+        <video class="motion-slide-video" src="videos/reel1.mp4" poster="videos/cover.jpg" muted loop playsinline preload="none"></video>
+        <div class="motion-slide-info"><h3>Raw Creation</h3></div>
+      </div>
+      <div class="motion-slide" data-index="2">
+        <video class="motion-slide-video" src="videos/reel3.mp4" poster="videos/cover.jpg" muted loop playsinline preload="none"></video>
+        <div class="motion-slide-info"><h3>Quiet Craft</h3></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?POETRY MOSAIC 鈺愨晲鈺愨晲鈺?-->
+<section class="section poetry-section" id="poetry">
+  <div class="poetry-header anim-up">
+    <p class="section-tag">Text Art</p>
+    <h2 class="section-heading">DO NOT GO GENTLE</h2>
+  </div>
+  <div class="poetry-grid" id="poetryGrid"></div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?ABOUT 鈺愨晲鈺愨晲鈺?-->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-large anim-up"><p class="section-tag">About the Artist</p><p>I&rsquo;m a visual artist working at the intersection of <em>traditional craft</em> and <em>digital experimentation</em>&mdash;where paint meets pixels.</p></div>
+    <div class="about-body anim-up">
+      <p>My work spans oil painting, digital art, sculpture, and installation. I don&rsquo;t believe in medium boundaries&mdash;the idea dictates the tools, not the other way around. Every piece is a conversation between intention and accident.</p>
+      <p>Based in Shanghai, exhibiting internationally. My work has appeared in galleries across Asia and Europe, and in private collections worldwide.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-num" data-count="60">0<span>+</span></div><div class="stat-lbl">Works Created</div></div>
+        <div class="stat"><div class="stat-num" data-count="12">0</div><div class="stat-lbl">Exhibitions</div></div>
+        <div class="stat"><div class="stat-num" data-count="7">0</div><div class="stat-lbl">Countries Shown</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?MARQUEE 鈺愨晲鈺愨晲鈺?-->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Crescent</div>
+    <div class="marquee-item">JingZhao</div>
+    <div class="marquee-item">Dog</div>
+    <div class="marquee-item">Jzj</div>
+    <div class="marquee-item">Zzh</div>
+    <div class="marquee-item">Little Horse</div>
+    <div class="marquee-item">Cll</div>
+    <div class="marquee-item">Cy(Ren ShenGuo)</div>
+    <div class="marquee-item">Cz</div>
+    <div class="marquee-item">Crescent</div>
+    <div class="marquee-item">JingZhao</div>
+    <div class="marquee-item">Dog</div>
+    <div class="marquee-item">Jzj</div>
+    <div class="marquee-item">Zzh</div>
+    <div class="marquee-item">Little Horse</div>
+    <div class="marquee-item">Cll</div>
+    <div class="marquee-item">Cy(Ren ShenGuo)</div>
+    <div class="marquee-item">Cz</div>
+  </div>
+</section>
+
+<!-- 鈺愨晲鈺愨晲鈺?FOOTER 鈺愨晲鈺愨晲鈺?-->
+<footer class="footer" id="contact">
+  <div class="footer-cta" id="footerCta"><span class="ft-word"><span class="ft-word-inner">LET&rsquo;S</span></span> <span class="ft-word"><span class="ft-word-inner">CREATE</span></span><br><span class="ft-word"><span class="ft-word-inner">SOMETHING</span></span> <span class="ft-word"><span class="ft-word-inner">ICONIC.</span></span></div>
+  <div class="footer-right"><a href="mailto:2578215228@qq.com" class="footer-link">2578215228@qq.com</a><p class="footer-copy">&copy; 2026. All rights reserved.</p></div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg class="btt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+  <span class="btt-label">Top</span>
+</button>
+
+<!-- Work Detail Overlay -->
+<div class="work-detail" id="workDetail">
+  <button class="detail-close" id="detailClose" aria-label="Close">&times;</button>
+  <div class="detail-hero"><div class="detail-hero-skeleton" id="detailHeroSkeleton"><div class="skeleton sk-tag"></div><div class="skeleton sk-title"></div><div class="skeleton sk-sub"></div></div><img class="detail-hero-img" id="detailHeroImg" src="" alt="" loading="lazy" decoding="async"><div class="detail-hero-content"><p class="section-tag" id="detailTag"></p><h1 id="detailTitle"></h1><p id="detailSubtitle"></p></div></div>
+  <div class="detail-body">
+    <div class="detail-meta" id="detailMeta"></div>
+    <div id="detailContent"></div>
+    <div class="detail-gallery" id="detailGallery"></div>
+  </div>
+</div>
+
+<!-- Menu Panel -->
+<div class="menu-panel" id="menuPanel">
+  <div class="menu-panel-bg"></div>
+  <div class="menu-panel-content">
+    <button class="menu-panel-close" id="menuPanelClose" aria-label="Close menu"><span>&times;</span></button>
+    <div class="menu-panel-grid">
+      <div class="menu-panel-left">
+        <nav class="menu-nav">
+          <a href="#work" class="menu-nav-link" data-link="work"><span class="menu-nav-num">01</span><span class="menu-nav-text">Selected Works</span></a>
+          <a href="#showcase" class="menu-nav-link" data-link="showcase"><span class="menu-nav-num">02</span><span class="menu-nav-text">Collection Highlights</span></a>
+          <a href="#motion" class="menu-nav-link" data-link="motion"><span class="menu-nav-num">03</span><span class="menu-nav-text">Motion</span></a>
+          <a href="#about" class="menu-nav-link" data-link="about"><span class="menu-nav-num">04</span><span class="menu-nav-text">About</span></a>
+        </nav>
+      </div>
+      <div class="menu-panel-right">
+        <div class="menu-info">
+          <p class="menu-info-label">Contact</p>
+          <a href="mailto:2578215228@qq.com" class="menu-info-link">2578215228@qq.com</a>
+        </div>
+        <div class="menu-info">
+          <p class="menu-info-label">Social</p>
+          <div class="menu-social">
+            <a href="#" class="menu-social-link">Instagram</a>
+            <a href="#" class="menu-social-link">Behance</a>
+            <a href="#" class="menu-social-link">Vimeo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-panel-footer">
+      <span>&copy; 2026 鈥?YYJZ Studio</span>
+    </div>
+  </div>
+</div>
+
+<script src="js/modules/data.js"></script>
+<script src="js/modules/theme.js"></script>
+<script src="js/modules/cursor.js"></script>
+<script src="js/modules/loader.js"></script>
+<script src="js/modules/nav.js"></script>
+<!-- <script src="js/modules/hover-preview.js"></script> -->
+<script type="module" src="js/modules/showcase.js"></script>
+<script src="js/modules/scroll-reveal.js"></script>
+<script src="js/modules/counter.js"></script>
+<script src="js/modules/poetry.js"></script>
+<script src="js/modules/work-detail.js"></script>
+<script src="js/modules/hash-router.js"></script>
+<script type="module" src="js/modules/motion-carousel.js"></script>
+<script src="js/modules/stars.js"></script>
+<script src="js/modules/hanging-circles.js"></script>
+<script src="js/modules/back-to-top.js"></script>
+<script src="js/modules/nav-waveform.js"></script>
+<script src="js/modules/crescent.js"></script>
+
+<script type="module" src="ice.js"></script>
+<script type="module" src="js/modules/premium-interactions.js"></script>
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-nav lightbox-nav-prev" aria-label="Previous"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg></div>
+  <div class="lightbox-nav lightbox-nav-next" aria-label="Next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg></div>
+  <img class="lightbox-img" src="" alt="" loading="lazy" decoding="async">
+  <div class="lightbox-counter"></div>
+</div>
+<script>
+// ServiceWorker disabled during development
+</script>
+</body>
+</html>

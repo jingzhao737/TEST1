@@ -1,0 +1,230 @@
+--- STEP 32 : write_to_file on implementation_plan.md" ---
+Created file with length 1083
+
+--- STEP 44 : write_to_file on implementation_plan.md" ---
+Created file with length 1069
+
+--- STEP 65 : write_to_file on task.md" ---
+Created file with length 266
+
+--- STEP 71 : replace_file_content on task.md" ---
+Instruction: "Update task list to mark Node.js install as in progress"
+Target: "- [ ] 安装 Node.js (通过 Winget) 并刷新环境变量"
+Replacement: "- [/] 安装 Node.js (通过 Winget) 并刷新环境变量"
+
+--- STEP 77 : replace_file_content on task.md" ---
+Instruction: "Update task.md to mark install Node as done and backup as in progress"
+Target: "- [/] 安装 Node.js (通过 Winget) 并刷新环境变量\n- [ ] 备份原代码文件 (保留在 backups/ 目录下)"
+Replacement: "- [x] 安装 Node.js (通过 Winget) 并刷新环境变量\n- [/] 备份原代码文件 (保留在 backups/ 目录下)"
+
+--- STEP 86 : replace_file_content on task.md" ---
+Instruction: "Update task.md to mark backup done and Vite init in progress"
+Target: "- [x] 安装 Node.js (通过 Winget) 并刷新环境变量\n- [/] 备份原代码文件 (保留在 backups/ 目录下)\n- [ ] 初始化 Vite 项目结构 (创建 src 和 public 目录)"
+Replacement: "- [x] 安装 Node.js (通过 Winget) 并刷新环境变量\n- [x] 备份原代码文件 (保留在 backups/ 目录下)\n- [/] 初始化 Vite 项目结构 (创建 src 和 public 目录)"
+
+--- STEP 117 : replace_file_content on package.json" ---
+Instruction: "Add dev and build scripts to package.json"
+Target: "  \"devDependencies\": {\n    \"sharp\": \"^0.34.5\",\n    \"vite\": \"^8.0.16\"\n  }\n}"
+Replacement: "  \"devDependencies\": {\n    \"sharp\": \"^0.34.5\",\n    \"vite\": \"^8.0.16\"\n  },\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\"\n  }\n}"
+
+--- STEP 133 : multi_replace_file_content on index.html" ---
+Instruction: "Update index.html with SEO meta tags, add defer to standard script tags, and remove three.js importmap since it is installed via npm."
+--- STEP 154 : multi_replace_file_content on stars.js" ---
+Instruction: "Add isVisible check to stars.js draw loop using IntersectionObserver"
+--- STEP 163 : multi_replace_file_content on hanging-circles.js" ---
+Instruction: "Add isVisible check to hanging-circles.js render loop using IntersectionObserver"
+--- STEP 170 : multi_replace_file_content on index.html" ---
+Instruction: "Update empty alt tags to descriptive strings in index.html"
+--- STEP 173 : write_to_file on task.md" ---
+Created file with length 266
+
+--- STEP 173 : write_to_file on walkthrough.md" ---
+Created file with length 1037
+
+--- STEP 194 : write_to_file on implementation_plan.md" ---
+Created file with length 1070
+
+--- STEP 208 : write_to_file on task.md" ---
+Created file with length 207
+
+--- STEP 226 : multi_replace_file_content on styles.css" ---
+Instruction: "Update colors and body properties in styles.css"
+--- STEP 232 : write_to_file on premium-interactions.js" ---
+Created file with length 2070
+
+--- STEP 238 : replace_file_content on index.html" ---
+Instruction: "Add script tag for premium-interactions.js"
+Target: "<script type=\"module\" src=\"ice.js\"></script>"
+Replacement: "<script type=\"module\" src=\"ice.js\"></script>\n<script type=\"module\" src=\"js/modules/premium-interactions.js\"></script>"
+
+--- STEP 247 : replace_file_content on index.html" ---
+Instruction: "Change src to /premium-interactions.js"
+Target: "<script type=\"module\" src=\"js/modules/premium-interactions.js\"></script>"
+Replacement: "<script type=\"module\" src=\"premium-interactions.js\"></script>"
+
+--- STEP 256 : write_to_file on task.md" ---
+Created file with length 207
+
+--- STEP 256 : write_to_file on walkthrough.md" ---
+Created file with length 927
+
+--- STEP 259 : write_to_file on walkthrough.md" ---
+Created file with length 927
+
+--- STEP 274 : write_to_file on implementation_plan.md" ---
+Created file with length 953
+
+--- STEP 283 : write_to_file on task.md" ---
+Created file with length 196
+
+--- STEP 289 : replace_file_content on index.html" ---
+Instruction: "Add aurora elements after body tag"
+Target: "<body>"
+Replacement: "<body>\n<div class=\"ambient-aurora\">\n  <div class=\"aurora-1\"></div>\n  <div class=\"aurora-2\"></div>\n</div>"
+
+--- STEP 302 : write_to_file on task.md" ---
+Created file with length 196
+
+--- STEP 335 : write_to_file on hover-preview.js" ---
+Created file with length 1839
+
+--- STEP 353 : replace_file_content on styles.css" ---
+Instruction: "Replace staggered reveal with hamburger offset"
+Target: "/* --- STAGGERED REVEAL PREVIEW OVERRIDES --- */\n.work-preview { display: none !important; }\n\n.work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  overflow: hidden;\n  opacity: 0;\n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  transition: opacity 0.3s var(--ease-out-expo);\n}\n.work-preview-wrapper.visible {\n  opacity: 1;\n}\n\n/* The dark layer (curtain) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; /* very dark elegant grey */\n  transform: translateY(100%);\n  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  transform: translateY(0%);\n}\n\n/* The image */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  transform: translateY(100%);\n  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);\n  transition-delay: 0.15s; /* stagger */\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  transform: translateY(0%);\n}"
+Replacement: "/* --- STAGGERED REVEAL PREVIEW OVERRIDES --- */\n.work-preview { display: none !important; }\n\n.work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  border-radius: 4px;\n  transition: opacity 0.3s var(--ease-out-expo);\n}\n.work-preview-wrapper.visible {\n  opacity: 1;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; /* very dark elegant grey */\n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  transform: translateY(20px) scale(0.9);\n  opacity: 0;\n  transition: transform 0.5s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  transform: translateY(0) scale(1);\n  opacity: 1;\n}\n\n/* The image (top hamburger bun) */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  transform: translateY(20px) scale(0.9);\n  opacity: 0;\n  /* Delay the image slightly so the dark layer shows first, then it pops to the top right */\n  transition: transform 0.6s var(--spring) 0.1s, opacity 0.4s ease 0.1s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  /* Offset to top right */\n  transform: translate(16px, -16px) scale(1);\n  opacity: 1;\n}"
+
+--- STEP 365 : replace_file_content on styles.css" ---
+Instruction: "Update hover preview animations to use exact same easing and starting points"
+Target: ".work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; /* very dark elegant grey */\n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  transform: translateY(20px) scale(0.9);\n  opacity: 0;\n  transition: transform 0.5s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  transform: translateY(0) scale(1);\n  opacity: 1;\n}\n\n/* The image (top hamburger bun) */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  transform: translateY(20px) scale(0.9);\n  opacity: 0;\n  /* Delay the image slightly so the dark layer shows first, then it pops to the top right */\n  transition: transform 0.6s var(--spring) 0.1s, opacity 0.4s ease 0.1s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  /* Offset to top right */\n  transform: translate(16px, -16px) scale(1);\n  opacity: 1;\n}"
+Replacement: ".work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; /* very dark elegant grey */\n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  transform: translate(0, 40px);\n  opacity: 0;\n  transition: transform 0.65s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  transform: translate(0, 0);\n  opacity: 1;\n}\n\n/* The image (top hamburger bun) */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  transform: translate(0, 40px);\n  opacity: 0;\n  transition: transform 0.65s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  transform: translate(16px, -16px);\n  opacity: 1;\n}"
+
+--- STEP 371 : replace_file_content on styles.css" ---
+Instruction: "Replace simple translate with clip-path masking, 3D perspective, and inner scale for a premium feel"
+Target: ".work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  border-radius: 4px;\n  transition: opacity 0.3s var(--ease-out-expo);\n}\n.work-preview-wrapper.visible {\n  opacity: 1;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; /* very dark elegant grey */\n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  transform: translate(0, 40px);\n  opacity: 0;\n  transition: transform 0.65s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  transform: translate(0, 0);\n  opacity: 1;\n}\n\n/* The image (top hamburger bun) */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  transform: translate(0, 40px);\n  opacity: 0;\n  transition: transform 0.65s var(--ease-out-expo), opacity 0.4s ease;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  transform: translate(16px, -16px);\n  opacity: 1;\n}"
+Replacement: "/* Wrapper with perspective */\n.work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  perspective: 1000px;\n  transition: opacity 0.3s ease;\n}\n.work-preview-wrapper.visible {\n  opacity: 1;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  \n  /* Extreme Premium Easing & Clip-path mask */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1), transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  transform: translateY(0) rotateX(0);\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  \n  /* Start hidden with mask and scaled up */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) translate(16px, -16px) scale(1.2) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s, transform 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  /* Ends offset to top right, scale settles to 1 */\n  transform: translateY(0) translate(16px, -16px) scale(1) rotateX(0);\n}"
+
+--- STEP 377 : replace_file_content on styles.css" ---
+Instruction: "Remove scale from transforms in work-preview-img CSS"
+Target: "/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  \n  /* Start hidden with mask and scaled up */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) translate(16px, -16px) scale(1.2) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s, transform 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  /* Ends offset to top right, scale settles to 1 */\n  transform: translateY(0) translate(16px, -16px) scale(1) rotateX(0);\n}"
+Replacement: "/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  \n  /* Start hidden with mask (removed scale) */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) translate(16px, -16px) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s, transform 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  /* Ends offset to top right */\n  transform: translateY(0) translate(16px, -16px) rotateX(0);\n}"
+
+--- STEP 383 : replace_file_content on styles.css" ---
+Instruction: "Replace transitions with keyframe animations to allow decoupled entry and exit directions"
+Target: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  \n  /* Extreme Premium Easing & Clip-path mask */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1), transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);\n  z-index: 1;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  transform: translateY(0) rotateX(0);\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  \n  /* Start hidden with mask (removed scale) */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n  transform: translateY(30px) translate(16px, -16px) rotateX(-15deg);\n  transition: clip-path 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s, transform 0.75s cubic-bezier(0.19, 1, 0.22, 1) 0.05s;\n  z-index: 2;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);\n  /* Ends offset to top right */\n  transform: translateY(0) translate(16px, -16px) rotateX(0);\n}"
+Replacement: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n  /* Exit animation (runs when .visible is removed) */\n  animation: curtain-out 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  /* Enter animation */\n  animation: curtain-in 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n  /* Exit animation (runs when .visible is removed) */\n  animation: img-out 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  /* Enter animation with 0.05s stagger */\n  animation: img-in 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.05s forwards;\n  /* Ensure it stays hidden during the 0.05s delay */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n}\n\n@keyframes curtain-in {\n  0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(30px) rotateX(-15deg); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) rotateX(0); }\n}\n@keyframes curtain-out {\n  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) rotateX(0); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transform: translateY(-30px) rotateX(15deg); }\n}\n@keyframes img-in {\n  0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(30px) translate(16px, -16px) rotateX(-15deg); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) translate(16px, -16px) rotateX(0); }\n}\n@keyframes img-out {\n  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) translate(16px
+<truncated 152 bytes>
+
+--- STEP 397 : replace_file_content on styles.css" ---
+Instruction: "Remove animation properties and transform defaults from preview CSS"
+Target: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n  /* Exit animation (runs when .visible is removed) */\n  animation: curtain-out 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n.work-preview-wrapper.visible .work-preview-curtain {\n  /* Enter animation */\n  animation: curtain-in 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n  /* Exit animation (runs when .visible is removed) */\n  animation: img-out 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;\n}\n.work-preview-wrapper.visible .work-preview-img {\n  /* Enter animation with 0.05s stagger */\n  animation: img-in 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.05s forwards;\n  /* Ensure it stays hidden during the 0.05s delay */\n  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);\n}\n\n@keyframes curtain-in {\n  0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(30px) rotateX(-15deg); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) rotateX(0); }\n}\n@keyframes curtain-out {\n  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) rotateX(0); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transform: translateY(-30px) rotateX(15deg); }\n}\n@keyframes img-in {\n  0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(30px) translate(16px, -16px) rotateX(-15deg); }\n  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) translate(16px, -16px) rotateX(0); }\n}\n@keyframes img-out {\n  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0) translate(16px
+<truncated 152 bytes>
+Replacement: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n}"
+
+--- STEP 412 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update GSAP durations for the exit animation in premium-interactions.js to make it faster"
+--- STEP 418 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Make wrapper opacity change faster and increase stagger delay for image layer in premium-interactions.js"
+--- STEP 427 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Add overwrite auto to previews.forEach and use onComplete instead of delayedCall for resetting preview state"
+--- STEP 436 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Remove previews.forEach loop from mouseenter to prevent killing other cards' onComplete callbacks"
+--- STEP 439 : replace_file_content on premium-interactions.js" ---
+Instruction: "Put activePreview = wrapper back at the start of mouseenter"
+Target: "    card.addEventListener('mouseenter', function() {\n      currentX = targetX; currentY = targetY;"
+Replacement: "    card.addEventListener('mouseenter', function() {\n      activePreview = wrapper;\n      currentX = targetX; currentY = targetY;"
+
+--- STEP 448 : write_to_file on implementation_plan.md" ---
+Created file with length 915
+
+--- STEP 454 : write_to_file on task.md" ---
+Created file with length 388
+
+--- STEP 463 : replace_file_content on styles.css" ---
+Instruction: "Refactor work-preview CSS to include an img-container"
+Target: "/* Wrapper with perspective */\n.work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  perspective: 1000px;\n  transition: opacity 0.3s ease;\n}\n.work-preview-wrapper.visible {\n  opacity: 1;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The image layer */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n}"
+Replacement: "/* Wrapper with perspective */\n.work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  perspective: 1000px;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The container for images (top hamburger bun) */\n.work-preview-img-container {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n  overflow: hidden; \n  background: #0d0d0f;\n}\n\n/* Individual images inside container */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}"
+
+--- STEP 469 : replace_file_content on premium-interactions.js" ---
+Instruction: "Replace old hover preview logic with new singleton class targeting .work-list and .work-card"
+Target: "// 4. GSAP Hover Preview\nif (!('ontouchstart' in window)) {\n  let previews = [], activePreview = null, targetX = 0, targetY = 0, currentX = 0, currentY = 0;\n\n  document.querySelectorAll('.work-card').forEach(function(card) {\n    let wrapper = document.createElement('div');\n    wrapper.className = 'work-preview-wrapper';\n    \n    let curtain = document.createElement('div');\n    curtain.className = 'work-preview-curtain';\n    \n    let img = document.createElement('img');\n    img.className = 'work-preview-img'; \n    img.src = card.dataset.image; \n    \n    wrapper.appendChild(curtain);\n    wrapper.appendChild(img);\n    document.body.appendChild(wrapper);\n    \n    // Initial State\n    gsap.set(curtain, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)', y: 30, rotationX: -15 });\n    gsap.set(img, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)', y: 30, x: 16, yPercent: -10, rotationX: -15 }); // yPercent to simulate -16px offset relative to scale, but let's just use y: 14 to simulate -16 relative to 30. Actually, just let GSAP handle it.\n    gsap.set(img, { y: 14, x: 16, rotationX: -15 }); \n    gsap.set(wrapper, { autoAlpha: 0 }); \n\n    previews.push({ card: card, wrapper: wrapper });\n\n    card.addEventListener('mouseenter', function() {\n      activePreview = wrapper;\n      currentX = targetX; currentY = targetY;\n      \n      gsap.to(wrapper, { autoAlpha: 1, duration: 0.15, overwrite: 'auto' });\n      \n      gsap.to(curtain, {\n        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',\n        y: 0,\n        rotationX: 0,\n        duration: 0.6,\n        ease: 'expo.out',\n        overwrite: 'auto'\n      });\n      \n      gsap.to(img, {\n        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',\n        y: -16,\n        x: 16,\n        rotationX: 0,\n        duration: 0.6,\n        ease: 'expo.out',\n        delay: 0.15,\n        overwrite: 'auto'\n      });\n    });\n    \n    card.addEventListener('mousemove', function(e) {\n      if (activePr
+<truncated 1395 bytes>
+Replacement: "// 4. GSAP Singleton Hover Preview\nif (!('ontouchstart' in window)) {\n  const workList = document.querySelector('.work-list');\n  const cards = document.querySelectorAll('.work-card');\n  \n  if (workList && cards.length > 0) {\n    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;\n    let isVisible = false;\n    let activeSrc = null;\n\n    // Singleton DOM\n    const wrapper = document.createElement('div');\n    wrapper.className = 'work-preview-wrapper';\n    \n    const curtain = document.createElement('div');\n    curtain.className = 'work-preview-curtain';\n    \n    const imgContainer = document.createElement('div');\n    imgContainer.className = 'work-preview-img-container';\n    \n    wrapper.appendChild(curtain);\n    wrapper.appendChild(imgContainer);\n    document.body.appendChild(wrapper);\n    \n    // Initial State\n    gsap.set(wrapper, { autoAlpha: 0 });\n    gsap.set(curtain, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)', y: 30, rotationX: -15 });\n    gsap.set(imgContainer, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)', y: 14, x: 16, rotationX: -15 }); \n    \n    // List Enter\n    workList.addEventListener('mouseenter', () => {\n      isVisible = true;\n      currentX = targetX; currentY = targetY; // snap to initial\n      \n      gsap.to(wrapper, { autoAlpha: 1, duration: 0.15, overwrite: 'auto' });\n      gsap.to(curtain, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', y: 0, rotationX: 0, duration: 0.6, ease: 'expo.out', overwrite: 'auto' });\n      gsap.to(imgContainer, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', y: -16, x: 16, rotationX: 0, duration: 0.6, ease: 'expo.out', delay: 0.15, overwrite: 'auto' });\n    });\n    \n    // List Leave\n    workList.addEventListener('mouseleave', () => {\n      isVisible = false;\n      activeSrc = null;\n      \n      gsap.to(wrapper, { autoAlpha: 0, duration: 0.2, overwrite: 'auto', onComplete: () => {\n        gsap.set(curtain, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%
+<truncated 2152 bytes>
+
+--- STEP 473 : write_to_file on task.md" ---
+Created file with length 388
+
+--- STEP 480 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update the exit GSAP tweens for curtain and imgContainer to animate back to the bottom (polygon 100%) instead of continuing upwards"
+--- STEP 486 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update the exit GSAP tweens to use the same duration, easing, and stagger (in reverse) as the entrance animation"
+--- STEP 492 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Change delays so the curtain exits before the imgContainer"
+--- STEP 498 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Change exit GSAP targets to top clipPath and negative Y, and add reset logic to the wrapper's onComplete"
+--- STEP 507 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update targetX/Y on mouseenter to prevent teleportation from old coordinates, and use onComplete on newImg to safely clear old images"
+--- STEP 513 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update mouseenter and mouseleave for workList to properly kill tweens, sync activeSrc with onComplete, and instantly apply positions."
+--- STEP 525 : replace_file_content on styles.css" ---
+Instruction: "Change the curtain background and image container border to use var(--accent) instead of static dark colors."
+Target: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: #0d0d0f; \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The container for images (top hamburger bun) */\n.work-preview-img-container {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  border: 1px solid rgba(255,255,255,0.05);\n  z-index: 2;\n  overflow: hidden; \n  background: #0d0d0f;\n}"
+Replacement: "/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: var(--accent); \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The container for images (top hamburger bun) */\n.work-preview-img-container {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  border: 1px solid var(--accent);\n  z-index: 2;\n  overflow: hidden; \n  background: #0d0d0f;\n}"
+
+--- STEP 531 : replace_file_content on premium-interactions.js" ---
+Instruction: "Decrease the interpolation factor in the RAF loop to make the preview drag behind the mouse more"
+Target: "    // RAF Animation Loop\n    (function animateHover() {\n      if (isVisible) {\n        let dx = targetX - currentX, dy = targetY - currentY;\n        currentX += dx * 0.12; currentY += dy * 0.12;\n        gsap.set(wrapper, { left: currentX, top: currentY });\n      }\n      requestAnimationFrame(animateHover);\n    })();"
+Replacement: "    // RAF Animation Loop\n    (function animateHover() {\n      if (isVisible) {\n        let dx = targetX - currentX, dy = targetY - currentY;\n        currentX += dx * 0.05; currentY += dy * 0.05; // lowered from 0.12 to 0.05 for more delay\n        gsap.set(wrapper, { left: currentX, top: currentY });\n      }\n      requestAnimationFrame(animateHover);\n    })();"
+
+--- STEP 537 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Change the inner switch GSAP ease from power3.inOut to expo.out to prevent stuttering when interrupted"
+--- STEP 540 : replace_file_content on styles.css" ---
+Instruction: "Add will-change: transform to .work-preview-img to prevent render stuttering on rapid creation"
+Target: "/* Individual images inside container */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}"
+Replacement: "/* Individual images inside container */\n.work-preview-img {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  will-change: transform;\n}"
+
+--- STEP 548 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Remove isVisible checks from RAF and mousemove to keep momentum globally, add hasMoved check for first init, and soften the wrapper exit fade out."
+--- STEP 557 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Change wrapper size to 200x138 and revert exit fade to 0.3s duration with 0.45s delay."
+--- STEP 560 : replace_file_content on styles.css" ---
+Instruction: "Change width to 200px and height to 138px for a smaller, tighter preview."
+Target: ".work-preview-wrapper {\n  position: fixed;\n  width: 260px;\n  height: 180px;\n  pointer-events: none;"
+Replacement: ".work-preview-wrapper {\n  position: fixed;\n  width: 200px;\n  height: 138px;\n  pointer-events: none;"
+
+--- STEP 563 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Change targetY offset from -120 to -90 to keep the cursor centered vertically on the smaller preview box."
+--- STEP 569 : replace_file_content on styles.css" ---
+Instruction: "Change wrapper to width 0 height 0, and move the 200x138 dimensions directly to curtain and imgContainer. Remove inset:0 from them."
+Target: "/* Wrapper with perspective */\n.work-preview-wrapper {\n  position: fixed;\n  width: 200px;\n  height: 138px;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  perspective: 1000px;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  inset: 0;\n  background: var(--accent); \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The container for images (top hamburger bun) */\n.work-preview-img-container {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  border: 1px solid var(--accent);\n  z-index: 2;\n  overflow: hidden; \n  background: #0d0d0f;\n}"
+Replacement: "/* Wrapper with perspective */\n.work-preview-wrapper {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 0;\n  height: 0;\n  pointer-events: none;\n  z-index: 90;\n  opacity: 0;\n  perspective: 1000px;\n  overflow: visible;\n}\n\n/* The dark layer (bottom hamburger bun) */\n.work-preview-curtain {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 200px;\n  height: 138px;\n  background: var(--accent); \n  border-radius: 4px;\n  box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.05);\n  z-index: 1;\n}\n\n/* The container for images (top hamburger bun) */\n.work-preview-img-container {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 200px;\n  height: 138px;\n  border-radius: 4px;\n  border: 1px solid var(--accent);\n  z-index: 2;\n  overflow: hidden; \n  background: #0d0d0f;\n}"
+
+--- STEP 572 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Update variables and RAF loop so curtain and imgContainer have separate interpolation speeds for a fluid trailing effect."
+--- STEP 578 : replace_file_content on premium-interactions.js" ---
+Instruction: "Increase the interpolation coefficients from 0.04/0.07 to 0.10/0.15 to make it track faster with a subtler delay."
+Target: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.04; curY1 += dy1 * 0.04; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.07; curY2 += dy2 * 0.07; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+Replacement: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.10; curY1 += dy1 * 0.10; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.15; curY2 += dy2 * 0.15; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+
+--- STEP 584 : replace_file_content on premium-interactions.js" ---
+Instruction: "Lower the interpolation coefficient for the top layer from 0.15 to 0.12 to increase its delay slightly."
+Target: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.10; curY1 += dy1 * 0.10; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.15; curY2 += dy2 * 0.15; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+Replacement: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.10; curY1 += dy1 * 0.10; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.12; curY2 += dy2 * 0.12; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+
+--- STEP 590 : replace_file_content on premium-interactions.js" ---
+Instruction: "Lower both interpolation coefficients to 0.06 (bottom) and 0.09 (top) to add more trailing delay while keeping the parallax effect."
+Target: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.10; curY1 += dy1 * 0.10; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.12; curY2 += dy2 * 0.12; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+Replacement: "    // RAF Animation Loop\n    (function animateHover() {\n      // Curtain (bottom layer) is heavy and slow\n      let dx1 = targetX - curX1, dy1 = targetY - curY1;\n      curX1 += dx1 * 0.06; curY1 += dy1 * 0.06; \n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.09; curY2 += dy2 * 0.09; \n      \n      gsap.set(curtain, { left: curX1, top: curY1 });\n      gsap.set(imgContainer, { left: curX2, top: curY2 });\n      requestAnimationFrame(animateHover);\n    })();"
+
+--- STEP 599 : multi_replace_file_content on premium-interactions.js" ---
+Instruction: "Calculate velocity in the RAF loop and map it to rotationY and rotation (rotateZ) to create a subtle dragging/tilt deformation effect on both layers."
+--- STEP 605 : replace_file_content on premium-interactions.js" ---
+Instruction: "Lower the tilt multipliers and clamps to reduce the force of the drag deformation."
+Target: "      let tiltY1 = gsap.utils.clamp(-20, 20, dx1 * 0.1);\n      let tiltZ1 = gsap.utils.clamp(-8, 8, dx1 * 0.03);\n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.09; curY2 += dy2 * 0.09; \n      \n      let tiltY2 = gsap.utils.clamp(-30, 30, dx2 * 0.15);\n      let tiltZ2 = gsap.utils.clamp(-12, 12, dx2 * 0.05);"
+Replacement: "      let tiltY1 = gsap.utils.clamp(-10, 10, dx1 * 0.04);\n      let tiltZ1 = gsap.utils.clamp(-4, 4, dx1 * 0.015);\n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.09; curY2 += dy2 * 0.09; \n      \n      let tiltY2 = gsap.utils.clamp(-15, 15, dx2 * 0.06);\n      let tiltZ2 = gsap.utils.clamp(-6, 6, dx2 * 0.025);"
+
+--- STEP 611 : replace_file_content on premium-interactions.js" ---
+Instruction: "Increase the tilt multipliers and clamps to find the sweet spot for the drag deformation."
+Target: "      let tiltY1 = gsap.utils.clamp(-10, 10, dx1 * 0.04);\n      let tiltZ1 = gsap.utils.clamp(-4, 4, dx1 * 0.015);\n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.09; curY2 += dy2 * 0.09; \n      \n      let tiltY2 = gsap.utils.clamp(-15, 15, dx2 * 0.06);\n      let tiltZ2 = gsap.utils.clamp(-6, 6, dx2 * 0.025);"
+Replacement: "      let tiltY1 = gsap.utils.clamp(-15, 15, dx1 * 0.06);\n      let tiltZ1 = gsap.utils.clamp(-6, 6, dx1 * 0.02);\n      \n      // Image container (top layer) is lighter and faster\n      let dx2 = targetX - curX2, dy2 = targetY - curY2;\n      curX2 += dx2 * 0.09; curY2 += dy2 * 0.09; \n      \n      let tiltY2 = gsap.utils.clamp(-20, 20, dx2 * 0.09);\n      let tiltZ2 = gsap.utils.clamp(-8, 8, dx2 * 0.035);"
+
